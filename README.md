@@ -1,9 +1,4 @@
 
------
-
-### **Paste the following content into your main `README.md` file:**
-
-````markdown
 # DeathStarBench - Social Network Profiling and Monitoring Setup
 
 This document provides step-by-step instructions for deploying the DeathStarBench social network application, which has been integrated with a comprehensive monitoring stack for performance analysis and bottleneck identification.

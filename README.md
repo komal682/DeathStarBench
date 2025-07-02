@@ -5,21 +5,21 @@ This document provides step-by-step instructions for deploying the DeathStarBenc
 
 ## Overview
 
-This project centers on implementing and evaluating a microservices-based social network platform. The system enables key functionalities such as user registration, creating posts, and viewing timelines[cite: 891]. The core of this project is a detailed performance assessment using Jaeger for distributed tracing, `wrk2` for workload simulation, and a full monitoring stack including Prometheus and Grafana[cite: 892].
+This project centers on implementing and evaluating a microservices-based social network platform. The system enables key functionalities such as user registration, creating posts, and viewing timelines. The core of this project is a detailed performance assessment using Jaeger for distributed tracing, `wrk2` for workload simulation, and a full monitoring stack including Prometheus and Grafana.
 
 ## Project Goal
 
-Social networks demand highly scalable and fault-tolerant architectures[cite: 894]. This project's primary objective is to gain hands-on experience in profiling and deploying microservices to address these challenges[cite: 896].
+Social networks demand highly scalable and fault-tolerant architectures. This project's primary objective is to gain hands-on experience in profiling and deploying microservices to address these challenges.
 
 The specific goals are:
-* **Deploy:** Start and run all social-network microservices within Docker containers[cite: 60].
-* **Load Testing:** Run a realistic read/write workload with `wrk2` to test the system's performance under different conditions[cite: 61, 899].
-* **Tracing & Monitoring:** Use Jaeger for distributed tracing and a full monitoring stack to observe system behavior and collect metrics[cite: 62, 912].
-* **Bottleneck Identification:** Analyze trace and performance data to find hotspots, latency sources, and recommend optimizations[cite: 63, 900].
+* **Deploy:** Start and run all social-network microservices within Docker containers.
+* **Load Testing:** Run a realistic read/write workload with `wrk2` to test the system's performance under different conditions.
+* **Tracing & Monitoring:** Use Jaeger for distributed tracing and a full monitoring stack to observe system behavior and collect metrics.
+* **Bottleneck Identification:** Analyze trace and performance data to find hotspots, latency sources, and recommend optimizations.
 
 ## Architecture Overview
 
-The Social Network is composed of multiple microservices that communicate using **Thrift RPCs**[cite: 907].
+The Social Network is composed of multiple microservices that communicate using **Thrift RPCs**.
 
 ### Application Services
 * **User Service**: Handles user authentication and management.
@@ -30,12 +30,12 @@ The Social Network is composed of multiple microservices that communicate using 
 * **Databases**: MongoDB and Redis.
 
 ### Integrated Monitoring Stack
-To facilitate end-to-end monitoring, the following tools were incorporated[cite: 908]:
-* **Prometheus**: A time-series database for collecting metrics from all services[cite: 909].
-* **Grafana**: A visualization tool for creating interactive dashboards from Prometheus data[cite: 910].
-* **cAdvisor**: Monitors container resource utilization (CPU, memory, network I/O)[cite: 911].
-* **Jaeger**: Pre-integrated for distributed tracing to visualize request flows and identify latency bottlenecks[cite: 912].
-* **Blackbox Exporter**: Included to monitor external service endpoints using TCP probes to ensure availability[cite: 913, 930].
+To facilitate end-to-end monitoring, the following tools were incorporated:
+* **Prometheus**: A time-series database for collecting metrics from all services.
+* **Grafana**: A visualization tool for creating interactive dashboards from Prometheus data.
+* **cAdvisor**: Monitors container resource utilization (CPU, memory, network I/O).
+* **Jaeger**: Pre-integrated for distributed tracing to visualize request flows and identify latency bottlenecks.
+* **Blackbox Exporter**: Included to monitor external service endpoints using TCP probes to ensure availability.
 
 ## Setup Instructions
 
@@ -55,8 +55,8 @@ sudo apt update && sudo apt install -y python3-pip luajit luasocket libssl-dev m
 
 ```bash
 # Clone your repository (replace with your URL) and its submodules
-git clone --recurse-submodules [https://github.com/Komal682/DeathStarBench_SocialNetwork_Project.git](https://github.com/Komal682/DeathStarBench_SocialNetwork_Project.git)
-cd DeathStarBench_SocialNetwork_Project/
+git clone --recurse-submodules https://github.com/komal682/DeathStarBench.git
+cd DeathStarBench/
 ```
 
 ### 3\. Build the Workload Generator
@@ -98,7 +98,7 @@ python3 scripts/init_social_graph.py --graph=socfb-Reed98
 
 ## Running Performance Tests
 
-[cite\_start]The following commands simulate the four different workloads used in our evaluation[cite: 2, 3]. [cite\_start]These tests were configured to run with **12 threads**, **400 concurrent connections** for a **duration of 300 seconds**, at a rate of **10 requests per second**[cite: 938, 941].
+The following commands simulate the four different workloads used in our evaluation. These tests were configured to run with **12 threads**, **400 concurrent connections** for a **duration of 300 seconds**, at a rate of **10 requests per second**.
 
 All test commands should be run from the `socialNetwork` directory.
 
@@ -131,9 +131,9 @@ All test commands should be run from the `socialNetwork` directory.
 Once the services are running, you can access the various UIs from your web browser:
 
   * **Grafana Dashboard**: `http://localhost:3000`
-  * [cite\_start]**Jaeger UI (Tracing)**: `http://localhost:16686` [cite: 916]
-  * [cite\_start]**Prometheus UI**: `http://localhost:9090` [cite: 916]
-  * [cite\_start]**cAdvisor (Container Stats)**: `http://localhost:8081` [cite: 916]
+  * **Jaeger UI (Tracing)**: `http://localhost:16686` 
+  * **Prometheus UI**: `http://localhost:9090` 
+  * **cAdvisor (Container Stats)**: `http://localhost:8081` 
 
 ## Stopping and Cleaning Up
 
@@ -153,9 +153,9 @@ docker compose down -v
 
 For more detailed information, please refer to the following documents in this repository:
 
-  * **[Architecture Deep Dive](https://www.google.com/search?q=docs/ARCHITECTURE.md)**: Understand the system design and the integrated monitoring stack.
-  * **[Setup and Usage Guide](https://www.google.com/search?q=docs/SETUP.md)**: Detailed step-by-step instructions to deploy and test the application.
-  * **[Evaluation and Results](https://www.google.com/search?q=docs/EVALUATION.md)**: A complete analysis of the performance tests and bottleneck identification.
+  * **[Architecture Deep Dive](socialNetwork/docs/ARCHITECTURE.md)**: Understand the system design and the integrated monitoring stack.
+  * **[Setup and Usage Guide](socialNetwork/docs/SETUP.md)**: Detailed step-by-step instructions to deploy and test the application.
+  * **[Evaluation and Results](socialNetwork/docs/EVALUATION.md)**: A complete analysis of the performance tests and bottleneck identification.
 
 <!-- end list -->
 
